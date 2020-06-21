@@ -60,10 +60,9 @@ And to compile your assets:
 >**password:** password
 
 ## To do
-- Use [Vuex](https://vuex.vuejs.org/ "I really hope that Vue will be totally independent in the future. Like React did with Redux.") to manager the states.
+- Use [Vuex](https://vuex.vuejs.org/ "I really hope that Vue will be totally independent in the future. Like React did with Redux.") to manager states.
 - Work with translations
 - Improve code quality
     - Separate tables and forms into components
     - Several other code improvements
     - I really don't know if I like Bootstrap...
-- Look for an alternative to Laravel Sanctum to protect the API. I don't like it too :/
