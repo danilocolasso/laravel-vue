@@ -6,7 +6,7 @@
                     <div class="card-header">
                         Employees
                         <button @click="create()" class="btn btn-primary btn-sm float-right">
-                            + Add new
+                            + Add
                         </button>
                     </div>
 

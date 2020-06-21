@@ -38395,7 +38395,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                        + Add new\n                    "
+                    "\n                        + Add\n                    "
                   )
                 ]
               )
