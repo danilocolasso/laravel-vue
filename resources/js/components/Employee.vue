@@ -38,7 +38,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="empty" v-else>There are no registered Employees.</div>
+                        <div class="empty" v-else v-show="!loading">There are no registered Employees.</div>
+                        <div class="empty" v-show="loading">Loading...</div>
                     </div>
                 </div>
             </div>
@@ -146,15 +147,17 @@
                 },
                 errors: [],
                 employees: [],
-                employee_edit: {}
+                employee_edit: {},
+                loading: true
             }
         },
         methods: {
             list()
             {
-                axios.get('/api/employees')
+                axios.get('/employees')
                     .then(response => {
                         this.employees = response.data.data;
+                        this.loading = false;
                     });
             },
             create()
@@ -165,7 +168,7 @@
             store()
             {
                 this.errors = [];
-                axios.post('/api/employee', {
+                axios.post('/employee', {
                     name: this.employee.name,
                     email: this.employee.email,
                     gender: this.employee.gender,
@@ -187,7 +190,7 @@
             },
             update()
             {
-                axios.put('/api/employee/' + this.employee_edit.id, {
+                axios.put('/employee/' + this.employee_edit.id, {
                     name: this.employee_edit.name,
                     email: this.employee_edit.email,
                     gender: this.employee_edit.gender,
@@ -203,7 +206,7 @@
             remove(index) //Delete word is reserved :(
             {
                 if(confirm("Do you ready want to delete this employee?")) {
-                    axios.delete('/api/employee/' + this.employees[index].id)
+                    axios.delete('/employee/' + this.employees[index].id)
                         .then(response => {
                             this.employees.splice(index, 1)
                         })

@@ -2044,6 +2044,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2055,15 +2056,17 @@ __webpack_require__.r(__webpack_exports__);
       },
       errors: [],
       employees: [],
-      employee_edit: {}
+      employee_edit: {},
+      loading: true
     };
   },
   methods: {
     list: function list() {
       var _this = this;
 
-      axios.get('/api/employees').then(function (response) {
+      axios.get('/employees').then(function (response) {
         _this.employees = response.data.data;
+        _this.loading = false;
       });
     },
     create: function create() {
@@ -2074,7 +2077,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.errors = [];
-      axios.post('/api/employee', {
+      axios.post('/employee', {
         name: this.employee.name,
         email: this.employee.email,
         gender: this.employee.gender,
@@ -2097,7 +2100,7 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this3 = this;
 
-      axios.put('/api/employee/' + this.employee_edit.id, {
+      axios.put('/employee/' + this.employee_edit.id, {
         name: this.employee_edit.name,
         email: this.employee_edit.email,
         gender: this.employee_edit.gender,
@@ -2113,7 +2116,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (confirm("Do you ready want to delete this employee?")) {
-        axios["delete"]('/api/employee/' + this.employees[index].id).then(function (response) {
+        axios["delete"]('/employee/' + this.employees[index].id).then(function (response) {
           _this4.employees.splice(index, 1);
         })["catch"](function (error) {//To do
         });
@@ -38457,9 +38460,37 @@ var render = function() {
                       ]
                     )
                   ])
-                : _c("div", { staticClass: "empty" }, [
-                    _vm._v("There are no registered Employees.")
-                  ])
+                : _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.loading,
+                          expression: "!loading"
+                        }
+                      ],
+                      staticClass: "empty"
+                    },
+                    [_vm._v("There are no registered Employees.")]
+                  ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.loading,
+                      expression: "loading"
+                    }
+                  ],
+                  staticClass: "empty"
+                },
+                [_vm._v("Loading...")]
+              )
             ])
           ])
         ])
