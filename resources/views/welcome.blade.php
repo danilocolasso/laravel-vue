@@ -46,6 +46,18 @@
 
             .title {
                 font-size: 84px;
+                cursor: default;
+                user-select: none;
+            }
+
+            .title > small {
+                font-size: 36px;
+            }
+
+            .title > .description {
+                text-align: left;
+                color: rgba(0,0,0,0.2);
+                font-size: 18px;
             }
 
             .links > a {
@@ -81,18 +93,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <div class="description">A simple application with</div>
+                    Laravel <small>and</small> Vue
                 </div>
             </div>
         </div>
